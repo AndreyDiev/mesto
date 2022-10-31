@@ -1,0 +1,11 @@
+.card__like {
+  background-color: #fff;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+  width: 22px;
+  height: 19px;
+  align-self: center;
+  margin-right: 30px;
+}
