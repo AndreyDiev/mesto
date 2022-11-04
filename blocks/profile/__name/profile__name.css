@@ -6,4 +6,17 @@
   margin: 0;
   margin-bottom: 16px;
   margin-right: 18px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+@media (max-width: 940px) {
+  .profile__name {
+    font-size: 27px;
+    line-height: 33px;
+    margin-right: 0;
+    margin-left: 29px;
+    margin-bottom: 9px;
+  }
 }

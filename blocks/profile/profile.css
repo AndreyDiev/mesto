@@ -5,3 +5,12 @@
   flex-direction: row;
   margin: 0 auto 51px;
 }
+
+@media (max-width: 940px) {
+  .profile {
+    flex-direction: column;
+    width: 90%;
+    height: 286px;
+    margin-bottom: 37px;
+  }
+}
