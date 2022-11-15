@@ -3,13 +3,13 @@
   margin: 45px auto 40px;
   display: flex;
   flex-direction: row;
-  height: 74px;
+  padding-bottom: 40px;
   border-bottom: 1px solid rgba(84, 84, 84, .7);
 }
 
 @media (max-width: 500px) {
   .header {
-    height: 56px;
+    padding-bottom: 31px;
     margin-top: 28px;
   }
 }

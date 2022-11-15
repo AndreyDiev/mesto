@@ -17,5 +17,6 @@
 @media (max-width: 600px) {
   .cards {
     max-width: 282px;
+    margin-bottom: 49px;
   }
 }

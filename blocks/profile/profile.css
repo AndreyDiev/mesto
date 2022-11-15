@@ -1,6 +1,5 @@
 .profile {
   max-width: 880px;
-  height: 120px;
   display: flex;
   flex-direction: row;
   margin: 0 auto 51px;
@@ -10,7 +9,6 @@
   .profile {
     flex-direction: column;
     width: 90%;
-    height: 286px;
     margin-bottom: 37px;
   }
 }

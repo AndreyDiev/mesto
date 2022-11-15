@@ -4,7 +4,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./vendor/normalize.css">
   <link rel="stylesheet" href="./pages/index.css">
   <title>mesto</title>
 </head>
@@ -19,58 +18,58 @@
       <img src="./images/Avatar.png" alt="Аватар профиля" class="profile__avatar">
       <div class="profile__info">
         <div class="profile__name-and-button">
-          <p class="profile__name">Жак-Ив Кусто</p>
-          <button class="profile__edit-button"><img src="./images/Vectorpen.png"
-            alt="кнопка редактирования профиля"></button>
+          <h2 class="profile__name">Жак-Ив Кусто</h2>
+          <button class="profile__edit-button"><img src="./images/Vectorpen.svg"
+              alt="кнопка редактирования профиля"></button>
         </div>
         <p class="profile__job">Исследователь океана</p>
       </div>
-      <button class="profile__add-button"><img src="./images/add_button.png" alt="Кнопка добавить"></button>
+      <button class="profile__add-button"><img src="./images/add_button.svg" alt="Кнопка добавить"></button>
     </section>
 
     <section class="cards">
-      <div class="card">
+      <article class="card">
         <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Горный храм" class="card__image">
         <div class="card__information">
-          <p class="card__title">Карачаевск</p>
+          <h3 class="card__title">Карачаевск</h3>
           <button class="card__like"></button>
         </div>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card">
         <img src="./images/kirill-pershin-1404681-unsplash.png" alt="гора эльбрус" class="card__image">
         <div class="card__information">
-          <p class="card__title">Гора Эльбрус</p>
+          <h3 class="card__title">Гора Эльбрус</h3>
           <button class="card__like"></button>
         </div>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card">
         <img src="./images/kirill-pershin-1556355-unsplashgoryyy.png" alt="Домбай" class="card__image">
         <div class="card__information">
-          <p class="card__title">домбай</p>
+          <h3 class="card__title">домбай</h3>
           <button class="card__like"></button>
         </div>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card">
         <img src="./images/kirill-pershin-1404681-unsplashgon.png" alt="Эльбрус" class="card__image">
         <div class="card__information">
-          <p class="card__title">Гора Эльбрус</p>
+          <h3 class="card__title">Гора Эльбрус</h3>
           <button class="card__like"></button>
         </div>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card">
         <img src="./images/kirill-pershin-1556355-unsplashgoryyy.png" alt="Домбай" class="card__image">
         <div class="card__information">
-          <p class="card__title">Домбай</p>
+          <h3 class="card__title">Домбай</h3>
           <button class="card__like"></button>
         </div>
-      </div>
-      <div class="card">
+      </article>
+      <article class="card">
         <img src="./images/kirill-pershin-1088404-unsplash.jpg" alt="Горный храм" class="card__image">
         <div class="card__information">
-          <p class="card__title">Карачаево-Черкесия</p>
+          <h3 class="card__title">Карачаево-Черкесия</h3>
           <button class="card__like"></button>
         </div>
-      </div>
+      </article>
     </section>
   </main>
   <footer class="footer">
@@ -80,13 +79,15 @@
   <section class="popup">
     <div class="popup__container">
       <button class="popup__close"><img src="./images/Close_Icon.svg" alt="крестик" class="popup__close-image"></button>
-      <p class="popup__title">Редактировать профиль</p>
-      <input type="text" class="popup__name" value="Жак-Ив Кусто">
-      <input type="text" class="popup__job" value="Исследователь океана">
-      <button class="popup__submit">Сохранить</button>
+      <h2 class="popup__title">Редактировать профиль</h2>
+      <form class="popup__form" name="form">
+        <input type="text" class="popup__input popup__input_value_name" value="Жак-Ив Кусто" name="name">
+        <input type="text" class="popup__input popup__input_value_job" value="Исследователь океана" name="job">
+        <button class="popup__submit">Сохранить</button>
+      </form>
     </div>
   </section>
-  <script src="./script.js"></script>
+  <script src="./scripts/script.js"></script>
 </body>
 
 </html>
