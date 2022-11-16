@@ -16,20 +16,20 @@ let profileJob = document.querySelector('.profile__job');
 // });
 
 function clickedEditButton() {
-  popup.classList.add('popup__active');
+  popup.classList.add('popup_active');
   formName.value = profileName.textContent;
   formJob.value = profileJob.textContent;
 }
 
 function clickedClosePopupButton() {
-  popup.classList.remove('popup__active');
+  popup.classList.remove('popup_active');
 }
 
 function formSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = formName.value;
   profileJob.textContent = formJob.value;
-  return popup.classList.remove('popup__active');
+  return popup.classList.remove('popup_active');
 }
 
 editButton.addEventListener('click', clickedEditButton);
