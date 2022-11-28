@@ -1,7 +1,18 @@
 .popup-image__close {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  box-sizing: border-box;
+  width: 32px;
+  height: 32px;
   position: relative;
-  left: 0px;
-  top: 0;
-  right: 0;
-  bottom: 0;
+  left: 36px;
+  bottom: 7px;
+  transition: 2s opacity ease;
+  align-self: end;
+}
+
+.popup__close:hover {
+  opacity: .6;
 }

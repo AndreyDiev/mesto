@@ -10,6 +10,7 @@
   left: 438px;
   bottom: 40px;
   transition: 2s opacity ease;
+  align-self: end;
 }
 
 .popup__close:hover {
