@@ -27,6 +27,7 @@ const initialCards = [
 
 const popupProfileEditButton = document.querySelector('.profile__edit-button');
 const popupProfile = document.querySelector('.popup-profile'); //было popup
+const popupContainer = document.querySelector('.popup__container');
 const PopupProfileCloseButton = document.querySelector('.popup-profile__close');
 const formName = document.querySelector('.popup__input_value_name');
 const formJob = document.querySelector('.popup__input_value_job');
@@ -99,6 +100,43 @@ const handleLikeCard = (event) => {
 }
 
 
+popupProfile.addEventListener("click", function (e) {
+  const target = e.target;
+  const its_menu = target == popupContainer || popupContainer.contains(target);
+  const menu_is_active = popupProfile.classList.contains("popup_active");
+
+  if (!its_menu && menu_is_active) {
+      popupProfile.classList.remove('popup_active');
+  }
+});
+
+popupImage.addEventListener("click", function (e) {
+  const target = e.target;
+  const its_menu = target == popupContainer || popupContainer.contains(target);
+  const menu_is_active = popupImage.classList.contains("popup_active");
+
+  if (!its_menu && menu_is_active) {
+      popupImage.classList.remove('popup_active');
+  }
+});
+
+document.addEventListener('keydown', function (evt) {
+  if(evt.keyCode === 27) {
+    popupProfile.classList.remove('popup_active');
+    popupImage.classList.remove('popup_active');
+    popupCreate.classList.remove('popup_active');
+  };
+});
+
+popupCreate.addEventListener("click", function (e) {
+  const target = e.target;
+  const its_menu = target == popupContainer || popupContainer.contains(target);
+  const menu_is_active = popupCreate.classList.contains("popup_active");
+
+  if (!its_menu && menu_is_active) {
+      popupCreate.classList.remove('popup_active');
+  }
+});
 
 
 const openImagePopup = (cardData) => {
