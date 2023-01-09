@@ -18,8 +18,10 @@
 }
 
 @media (max-width: 550px) {
-  .popup__close {
+  .popup-image__close {
     width: 20px;
     height: 20px;
+    left: 0;
+    bottom: 16px;
   }
 }

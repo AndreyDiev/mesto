@@ -39,11 +39,15 @@ function hasInvalidInput(inputList) {
   })
 }
 
+function disablingButton(button) {
+  button.classList.add('popup__submit_disabled');
+  button.disabled = true;
+}
+
 function toggleButtonState(inputList, buttonElement, config) {
   if (hasInvalidInput(inputList)) {
 
-    buttonElement.classList.add(config.inactiveButtonClass);
-    buttonElement.disabled = true;
+    disablingButton(buttonElement);
   } else {
 
     buttonElement.classList.remove(config.inactiveButtonClass);
@@ -73,5 +77,4 @@ function enableValidation (config) {
 }
 
 enableValidation(validationConfig);
-
 
