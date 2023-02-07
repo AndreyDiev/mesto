@@ -3,6 +3,8 @@ export default class FormValidator {
     this._formEl = formElement;
     this._inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
     this._buttonElement = formElement.querySelector(config.buttonSelector);
+    this._errorClass = config.errorClass;
+    this._inactiveButton = config.inactiveButtonClass;
   }
 
   enableValidation() {
@@ -19,34 +21,33 @@ export default class FormValidator {
   }
 
   _isValid(inputElement) {
+    const errorElement = this._formEl.querySelector(`.popup__${inputElement.name}-error`);
+
     if (inputElement.validity.valid) {
-      this._hideInputError()
+      this._hideInputError(inputElement, errorElement)
     } else {
-      this._showInputError();
+      this._showInputError(inputElement, errorElement);
     }
   }
 
-  _showInputError(inputElement) {
-    const errorElement = this._formEl.querySelector(`.popup__${inputElement.name}-error`);
-
-    errorElement.classList.add(config.errorClass);
+  _showInputError(inputElement, errorElement) {
+    errorElement.classList.add(this._errorClass);
     errorElement.textContent = inputElement.validationMessage;
-    inputElement.classList.add(config.inputErrorClass);
+    inputElement.classList.add(this._errorClass);
   }
 
   _hideInputError(inputElement, errorElement) {
-    errorElement.classList.remove(config.errorClass);
+    errorElement.classList.remove(this._errorClass);
     errorElement.textContent = '';
-    inputElement.classList.remove(config.inputErrorClass);
+    inputElement.classList.remove(this._errorClass);
   }
 
   _toggleButtonState() {
     if (this._hasInvalidInput(this._inputList)) {
-
-      disablingButton(this._buttonElement);
+      this._buttonElement.classList.add('popup__submit_disabled');
+      this._buttonElement.disabled = true;
     } else {
-
-      this._buttonElement.classList.remove(config.inactiveButtonClass);
+      this._buttonElement.classList.remove(this._inactiveButton);
       this._buttonElement.disabled = false;
     }
   }
@@ -56,10 +57,5 @@ export default class FormValidator {
 
       return !inputElement.validity.valid;
     })
-  }
-
-  _disablingButton(button) {
-    button.classList.add('popup__submit_disabled');
-    button.disabled = true;
   }
 }

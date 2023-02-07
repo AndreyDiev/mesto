@@ -96,15 +96,6 @@ function submitProfileForm(evt) {
 }
 
 // Добавление карточек
-
-const handleDeleteCard = (event) => {
-  event.target.closest('.card').remove();
-}
-
-const handleLikeCard = (event) => {
-  event.target.closest('.card__like').classList.toggle('card__like_active');
-}
-
 const handleCloseByOverlay = (e) => {
   if (e.target === e.currentTarget) {
     closePopup(e.target)
@@ -124,24 +115,6 @@ export const openImagePopup = (link, place) => {
   openPopup(popupImage);
 }
 
-/*
-const generateCard = (cardData) => {
-  const newCard = cardTemplate.cloneNode(true);
-
-  const place = newCard.querySelector('.card__title');
-  place.textContent = cardData.place;
-  const image = newCard.querySelector('.card__image');
-  image.src = cardData.link;
-  image.alt = cardData.place;
-  const buttonDelete = newCard.querySelector('.card__trash');
-  buttonDelete.addEventListener('click', handleDeleteCard);
-  const buttonLike = newCard.querySelector('.card__like');
-  buttonLike.addEventListener('click', handleLikeCard);
-  image.addEventListener('click', () => openImagePopup(cardData));
-
-  return newCard;
-}
-*/
 const renderCard = (cardData) => {
   const card = new Card(cardData, openImagePopup);
   cardsContainer.prepend(card.getView());
@@ -150,6 +123,11 @@ const renderCard = (cardData) => {
 initialCards.forEach((cardData) => {
   renderCard(cardData);
 });
+
+function disablingButton(button) {
+  button.classList.add('popup__submit_disabled');
+  button.disabled = true;
+}
 
 function createFormSubmit(evt) {
   evt.preventDefault();
