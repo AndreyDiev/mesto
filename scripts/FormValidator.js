@@ -1,18 +1,8 @@
-const validationConfig = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__input',
-  buttonSelector: '.popup__submit',
-  inactiveButtonClass: 'popup__submit_disabled',
-  inputErrorClass: 'popup__input_type_error',
-  errorClass: 'form__input-error_active'
-};
-
 export default class FormValidator {
   constructor(config, formElement) {
     this._formEl = formElement;
     this._inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
     this._buttonElement = formElement.querySelector(config.buttonSelector);
-    this._errorElement = formElement.querySelector(`.popup__${inputElement.name}-error`);
   }
 
   enableValidation() {
@@ -37,14 +27,16 @@ export default class FormValidator {
   }
 
   _showInputError(inputElement) {
-    this._errorElement.classList.add(config.errorClass);
-    this._errorElement.textContent = inputElement.validationMessage;
+    const errorElement = this._formEl.querySelector(`.popup__${inputElement.name}-error`);
+
+    errorElement.classList.add(config.errorClass);
+    errorElement.textContent = inputElement.validationMessage;
     inputElement.classList.add(config.inputErrorClass);
   }
 
-  _hideInputError(inputElement) {
-    this._errorElement.classList.remove(config.errorClass);
-    this._errorElement.textContent = '';
+  _hideInputError(inputElement, errorElement) {
+    errorElement.classList.remove(config.errorClass);
+    errorElement.textContent = '';
     inputElement.classList.remove(config.inputErrorClass);
   }
 
@@ -71,8 +63,3 @@ export default class FormValidator {
     button.disabled = true;
   }
 }
-
-const ProfileValidator = new FormValidator(validationConfig, '.popup-profile__form');
-const CreateValidator = new FormValidator(validationConfig, '.popup-create__form');
-ProfileValidator.enableValidation();
-CreateValidator.enableValidation();
