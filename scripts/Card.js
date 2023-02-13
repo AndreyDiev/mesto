@@ -1,9 +1,10 @@
 class Card {
-  constructor(cardData, openImagePopup) {
+  constructor(cardData, hahdleClickImage) {
     this._cardData = cardData;
     this._place = cardData.place;
     this._link = cardData.link;
-    this.openImagePopup = openImagePopup;
+    this.hahdleClickImage = hahdleClickImage;
+    //this._buttonLike = newCard.querySelector('.card__like');
   }
 
   _getTemplate() {
@@ -16,11 +17,13 @@ class Card {
   }
 
   _setData() {
+    console.log(this._newCard);
     const titleElement = this._newCard.querySelector('.card__title');
     titleElement.textContent = this._place;
     const imageELement = this._newCard.querySelector('.card__image');
     imageELement.src = this._link;
     imageELement.alt = this._place;
+    this._buttonLike = this._newCard.querySelector('.card__like');
   }
 
   _deleteCard() {
@@ -29,16 +32,15 @@ class Card {
   }
 
   _setLike() {
-    this._newCard.querySelector('.card__like').classList.toggle('card__like_active');
+    this._buttonLike.classList.toggle('card__like_active');
   }
 
   _setEventListeners() {
     const deleteButton = this._newCard.querySelector('.card__trash');
     deleteButton.addEventListener('click', () => { this._deleteCard() });
-    const likeButton = this._newCard.querySelector('.card__like');
-    likeButton.addEventListener('click', () => { this._setLike() });
+    this._buttonLike.addEventListener('click', () => { this._setLike() });
 
-    this._newCard.addEventListener('click', () => { this.openImagePopup(this._link, this._place) });
+    this._newCard.addEventListener('click', () => { this.hahdleClickImage(this._link, this._place) });
   }
 
   getView() {

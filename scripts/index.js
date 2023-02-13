@@ -95,7 +95,6 @@ function submitProfileForm(evt) {
   closePopup(popupProfile);
 }
 
-// Добавление карточек
 const handleCloseByOverlay = (e) => {
   if (e.target === e.currentTarget) {
     closePopup(e.target)
@@ -104,7 +103,7 @@ const handleCloseByOverlay = (e) => {
 
 function handleClosingPopupByEsc(evt) {
   if (evt.keyCode === 27) {
-    document.querySelector('.popup_active').classList.remove('popup_active');
+    closePopup(document.querySelector('.popup_active'));
   };
 }
 
@@ -117,17 +116,21 @@ export const openImagePopup = (link, place) => {
 
 const renderCard = (cardData) => {
   const card = new Card(cardData, openImagePopup);
-  cardsContainer.prepend(card.getView());
+  return card.getView();
+}
+
+const addCard = (card) => {
+  cardsContainer.prepend(card);
 }
 
 initialCards.forEach((cardData) => {
-  renderCard(cardData);
+  addCard(renderCard(cardData));
 });
 
-function disablingButton(button) {
-  button.classList.add('popup__submit_disabled');
-  button.disabled = true;
-}
+const profileValidator = new FormValidator(validationConfig, popupProfileForm);
+const createValidator = new FormValidator(validationConfig, popupCreateForm);
+profileValidator.enableValidation();
+createValidator.enableValidation();
 
 function createFormSubmit(evt) {
   evt.preventDefault();
@@ -137,7 +140,7 @@ function createFormSubmit(evt) {
   });
   inputPlace.value = '';
   inputLink.value = '';
-  disablingButton(popupCreateSubmitButton);
+  createValidator.disablingButton(popupCreateSubmitButton);
   closePopup(popupCreate);
 }
 
@@ -154,7 +157,4 @@ popupImageCloseBtn.addEventListener('click', () => {
   closePopup(popupImage);
 });
 
-const ProfileValidator = new FormValidator(validationConfig, popupProfileForm);
-const CreateValidator = new FormValidator(validationConfig, popupCreateForm);
-ProfileValidator.enableValidation();
-CreateValidator.enableValidation();
+
