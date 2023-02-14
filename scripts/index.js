@@ -134,10 +134,10 @@ createValidator.enableValidation();
 
 function createFormSubmit(evt) {
   evt.preventDefault();
-  renderCard({
+  addCard(renderCard({
     place: inputPlace.value,
     link: inputLink.value
-  });
+  }));
   inputPlace.value = '';
   inputLink.value = '';
   createValidator.disablingButton(popupCreateSubmitButton);
