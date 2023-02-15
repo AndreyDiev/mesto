@@ -20,9 +20,9 @@ class Card {
     console.log(this._newCard);
     const titleElement = this._newCard.querySelector('.card__title');
     titleElement.textContent = this._place;
-    const imageELement = this._newCard.querySelector('.card__image');
-    imageELement.src = this._link;
-    imageELement.alt = this._place;
+    this._imageELement = this._newCard.querySelector('.card__image');
+    this._imageELement.src = this._link;
+    this._imageELement.alt = this._place;
     this._buttonLike = this._newCard.querySelector('.card__like');
   }
 
@@ -40,7 +40,7 @@ class Card {
     deleteButton.addEventListener('click', () => { this._deleteCard() });
     this._buttonLike.addEventListener('click', () => { this._setLike() });
 
-    this._newCard.addEventListener('click', () => { this.hahdleClickImage(this._link, this._place) });
+    this._imageELement.addEventListener('click', () => { this.hahdleClickImage(this._link, this._place) });
   }
 
   getView() {

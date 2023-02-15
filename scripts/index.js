@@ -140,7 +140,7 @@ function createFormSubmit(evt) {
   }));
   inputPlace.value = '';
   inputLink.value = '';
-  createValidator.disablingButton(popupCreateSubmitButton);
+  createValidator.disablingButton();
   closePopup(popupCreate);
 }
 

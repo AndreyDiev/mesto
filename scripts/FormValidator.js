@@ -46,7 +46,7 @@ export default class FormValidator {
     if (this._hasInvalidInput()) {
       //this._buttonElement.classList.add('popup__submit_disabled');
       //this._buttonElement.disabled = true;
-      this.disablingButton(this._buttonElement);
+      this.disablingButton();
     } else {
       this._buttonElement.classList.remove(this._inactiveButton);
       this._buttonElement.disabled = false;
@@ -60,8 +60,8 @@ export default class FormValidator {
     })
   }
 
-  disablingButton(button) {
-    button.classList.add('popup__submit_disabled');
-    button.disabled = true;
+  disablingButton() {
+    this._buttonElement.classList.add('popup__submit_disabled');
+    this._buttonElement.disabled = true;
   }
 }
