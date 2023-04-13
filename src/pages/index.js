@@ -17,7 +17,7 @@ import {
   popupCreate,
   popupCreateButton,
   popupCreateCloseButton, inputPlace, inputLink, popupCreateForm, popupImage, popupImagePhoto,
-  popupImageTitle, popupImageCloseBtn
+  popupImageTitle, popupImageCloseBtn,
 } from '../utils/constants.js';
 import UserInfo from '../components/UserInfo.js';
 import PopupWithForm from '../components/PopupWithForm.js';
@@ -28,7 +28,6 @@ import PopupWithImage from '../components/PopupWithImage.js';
 
 const userInfo = new UserInfo('.profile__name', '.profile__job');
 const userInfoPopup = new PopupWithForm(popupProfile, () => {
-
   userInfo.getUserInfo();
   userInfo.setUserInfo();
   userInfoPopup.close();
@@ -40,7 +39,6 @@ userInfoPopup.setEventListeners();
 
 const cardCreatePopup = new PopupWithForm(popupCreate, (evt) => {
   evt.preventDefault();
-
 });
 
 
@@ -146,6 +144,8 @@ popupProfileEditButton.addEventListener('click', () => { userInfoPopup.open() })
 popupProfileCloseButton.addEventListener('click',  () => { userInfoPopup.close() });
 
 popupCreateForm.addEventListener('submit', createFormSubmit);
+popupCreateButton.addEventListener('click', () => { cardCreatePopup.open() });
+popupCreateCloseButton.addEventListener('click', () => { cardCreatePopup.close() })
 popupImageCloseBtn.addEventListener('click', () => {
   closePopup(popupImage);
 });
