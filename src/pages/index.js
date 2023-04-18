@@ -39,14 +39,11 @@ userInfoPopup.setEventListeners();
 
 const cardCreatePopup = new PopupWithForm(popupCreate, (evt) => {
   evt.preventDefault();
+  cardCreatePopup._getInputValues();
+  cardsList.renderItems();
 });
 
-
-
 const imagePopup = new PopupWithImage(popupImage);
-
-
-
 
 const cardsList = new Section({
   items: initialCards,
@@ -62,92 +59,21 @@ cardsContainer
 
 cardsList.renderItems();
 
-
 export const openImagePopup = (link, place) => {
   popupImagePhoto.src = link;
   popupImagePhoto.alt = place;
   popupImageTitle.textContent = place;
   openPopup(popupImage);
 }
-//const card = new Card(cardData, openImagePopup);
-//cardsList.addItem(card.getView());
-
-/*
-const renderCard = (cardData) => {
-  const card = new Card(cardData, openImagePopup);
-  return card.getView();
-}
-
-const addCard = (card) => {
-  cardsContainer.prepend(card);
-}
-
-initialCards.forEach((cardData) => {
-  addCard(renderCard(cardData));
-});
-function openPopup(popup) {
-  popup.classList.add('popup_active');
-  document.addEventListener('keydown', handleClosingPopupByEsc);
-}
-
-
-
-function closePopup(popup) {
-  popup.classList.remove('popup_active');
-  document.removeEventListener('keydown', handleClosingPopupByEsc);
-}
-
-function handleClickedAddButton() {
-  openPopup(popupCreate);
-}
-
-function handleClickedCloseAddPopup() {
-  closePopup(popupCreate);
-}
-
-const handleCloseByOverlay = (e) => {
-  if (e.target === e.currentTarget) {
-    closePopup(e.target)
-  }
-}
-
-function handleClosingPopupByEsc(evt) {
-  if (evt.keyCode === 27) {
-    closePopup(document.querySelector('.popup_active'));
-  };
-}
-
-
-*/
-
 
 const profileValidator = new FormValidator(validationConfig, popupProfileForm);
 const createValidator = new FormValidator(validationConfig, popupCreateForm);
 profileValidator.enableValidation();
 createValidator.enableValidation();
 
-function createFormSubmit(evt) {
-  evt.preventDefault();
-  addCard(renderCard({
-    place: inputPlace.value,
-    link: inputLink.value
-  }));
-  inputPlace.value = '';
-  inputLink.value = '';
-  createValidator.disablingButton();
-  closePopup(popupCreate);
-}
-
-
-
 popupProfileEditButton.addEventListener('click', () => { userInfoPopup.open() });
 popupProfileCloseButton.addEventListener('click',  () => { userInfoPopup.close() });
-
-popupCreateForm.addEventListener('submit', createFormSubmit);
 popupCreateButton.addEventListener('click', () => { cardCreatePopup.open() });
 popupCreateCloseButton.addEventListener('click', () => { cardCreatePopup.close() })
-popupImageCloseBtn.addEventListener('click', () => {
-  closePopup(popupImage);
-});
 
 
